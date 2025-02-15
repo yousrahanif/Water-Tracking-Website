@@ -21,22 +21,28 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const header =(
-    <header className="p-4 sm:p-8 flex items-center justify-between gap-4">
-     <Link href={'/'}> 
-     
-     <h1 className={'text-base sm:text-lg '}>Water Tracking Website</h1>
-     </Link>
-     <Logout />
-
+  const header = (
+    <header className="p-4 sm:p-8 bg-white shadow-md flex items-center justify-between gap-4">
+      <Link href="/" className="flex items-center"> {/* Make Link a flex container */}
+        <span className="text-2xl sm:text-3xl font-bold text-indigo-700 mr-2">💧</span> {/* Water drop icon */}
+        <h1 className="text-xl sm:text-2xl font-extrabold text-indigo-700 tracking-tight">AquaTrack</h1> {/* App name */}
+      </Link>
+      <Logout />
     </header>
-  )
+  );
 
-  const footer =(
-    <footer className="p-4 sm:p-8 grid place-items-center">
-<p>Built With ❤️ </p>
+  const footer = (
+    <footer className="p-4 sm:p-8 bg-gradient-to-r from-indigo-500 to-blue-500 text-white text-center shadow-lg">
+      <div className="max-w-7xl mx-auto"> {/* Optional: Center content and set max width */}
+        <p className="font-semibold text-lg sm:text-xl tracking-wide">
+          Stay Hydrated, Stay Healthy 💧 | Built with ❤️ for a Better You
+        </p>
+        <p className="text-sm sm:text-base mt-2 opacity-70">
+          © {new Date().getFullYear()} 
+        </p>
+      </div>
     </footer>
-  )
+  );
   
   return (
     <html lang="en">
