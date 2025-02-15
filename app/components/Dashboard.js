@@ -8,6 +8,7 @@ import Loading from './Loading';
 import Login from './Login';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { db } from '@/firebase';
+import WaterQuickEntry from './WaterQuickEntry';
 
 export default function Dashboard() {
   const { currentUser, userDataObj, setUserDataObj, loading } = useAuth();
@@ -15,6 +16,21 @@ export default function Dashboard() {
   const [selectedWater, setSelectedWater] = useState(null);
   const [selectedDay, setSelectedDay] = useState(new Date().getDate());
   const [isPastDay, setIsPastDay] = useState(false);
+
+
+
+
+
+
+  const [quickEntryWater, setQuickEntryWater] = useState(0); // Store quick entry data
+
+  const handleQuickEntryUpdate = (glasses) => {
+      setQuickEntryWater(glasses);
+    };
+
+
+
+
   const now = new Date();
 
   const handleDayClick = (dayIndex) => {
@@ -31,9 +47,18 @@ export default function Dashboard() {
     const selectedDate = new Date(now.getFullYear(), now.getMonth(), selectedDay);
     const isPast = selectedDate < new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
+    // if (!isPast) {
+    //   setSelectedWater(index + 1);
+    //   handleSetWater(index + 1, selectedDay);
+    // }
+
     if (!isPast) {
-      setSelectedWater(index + 1);
-      handleSetWater(index + 1, selectedDay);
+      const totalWater = quickEntryWater + (index + 1); // Calculate TOTAL water *first*
+
+      setSelectedWater(index + 1); // Set the selected water amount
+      handleSetWater(totalWater, selectedDay); // Save the TOTAL water
+
+      setQuickEntryWater(0); // *Now* reset quickEntryWater
     }
   };
 
@@ -140,7 +165,9 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="flex flex-col flex-1 gap-8 sm:gap-12 md:gap-16 p-6">
+    <div>
+       
+<div className="flex flex-col flex-1 gap-8 sm:gap-12 md:gap-16 p-6">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-lg p-6 text-white shadow-xl backdrop-blur-md">
         {Object.keys(statues).map((status, index) => (
           <div
@@ -158,10 +185,19 @@ export default function Dashboard() {
           </div>
         ))}
       </div>
-
       <h4 className="text-3xl sm:text-4xl md:text-5xl text-center font-bold text-indigo-700">
         How much <span className="text-blue-500">Water</span> did you drink today?
       </h4>
+     
+
+
+
+      <WaterQuickEntry onWaterUpdate={handleQuickEntryUpdate} /> 
+
+
+
+
+
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {Object.keys(water).map((w, index) => (
@@ -190,5 +226,9 @@ export default function Dashboard() {
         handleDayClick={handleDayClick}
       />
     </div>
+
+
+    </div>
+    
   );
 }

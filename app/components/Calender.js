@@ -110,8 +110,8 @@ export default function Calender(props) {
                   onClick={() => handleDayClickInternal(dayIndex)}
                   className={`p-4 rounded-lg font-bold flex flex-col items-center justify-center 
                     ${isSelected ? 'border-2 border-blue-600' : ''} 
-                    ${isToday ? 'bg-blue-600 text-white font-semibold ring-2 ring-blue-400' : ''} 
-                    ${isFutureDate ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'} 
+${isToday ? 'bg-gradient-to-r from-blue-200 via-blue-300 to-blue-400 font-semibold ring-2 ring-blue-300' : ''}                  
+  ${isFutureDate ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'} 
                     ${savedWaterIndex && !isToday ? 'bg-purple-300' : 'bg-white'}
                   `}
                   disabled={isFutureDate}
@@ -126,10 +126,17 @@ export default function Calender(props) {
                 </button>
 
               );
+
+
+
+              
             }
           });
         })}
       </div>
     </div>
   )
+
+
+
 }
