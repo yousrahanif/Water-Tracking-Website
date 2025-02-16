@@ -66,10 +66,18 @@ export default function WaterQuickEntry({ onWaterUpdate }) {
   return (
     <div className="p-4 rounded-lg shadow-md bg-white flex flex-col items-center relative">
       <div className="absolute top-2 right-2 cursor-pointer" onClick={showQuickEntryInfo}>
-        <i className="fas fa-info-circle text-gray-500 hover:text-gray-700 fa-2x"></i> 
+        <i className="fas fa-info-circle text-gray-500 hover:text-gray-700 fa-2x"></i>
       </div>
-      <h3 className="text-lg font-semibold mb-2 text-center">Quick Water Entry</h3>
-      <div className="flex items-center justify-center mb-4">
+
+      <div className="flex flex-col items-center"> {/* Container for title and description */}
+        <h3 className="text-lg font-semibold mb-1 text-center">Quick Water Entry</h3> {/* Reduced margin */}
+        <p className="text-sm text-gray-600 text-center">
+          Tap + or - to track glasses for {today}.
+        </p>
+        <p className="text-xs text-gray-500 text-center">Save to record your total.</p> {/* Even smaller, lighter text */}
+      </div>
+
+      <div className="flex items-center justify-center my-3"> {/* Added margin top and bottom */}
         <button onClick={handleDecrement} className="p-2 rounded bg-gray-200 mr-2">
           -
         </button>
@@ -80,7 +88,7 @@ export default function WaterQuickEntry({ onWaterUpdate }) {
       </div>
       <button
         onClick={handleSave}
-        className="mt-2 p-3 rounded-lg bg-blue-600 text-white font-semibold w-full sm:w-auto px-6 py-2 transition duration-300 ease-in-out hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300"
+        className="w-1/12 mt-2 p-3 rounded-lg bg-blue-600 text-white font-semibold transition duration-300 ease-in-out hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300"
       >
         Save
       </button>
