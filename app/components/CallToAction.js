@@ -19,10 +19,10 @@ export default function CallToAction() {
 
     return (
         <div className='grid grid-cols-2 gap-4 w-fit mx-auto'>
-        <Link href={'/dashboard?mode=signup'}> {/* Added query parameter */}
+        <Link href={'/dashboard?mode=signup'}> 
             <Button text="Sign Up" />
         </Link>
-        <Link href={'/dashboard?mode=login'}> {/* Added query parameter */}
+        <Link href={'/dashboard?mode=login'}> 
             <Button text="Login" dark />
         </Link>
     </div>
