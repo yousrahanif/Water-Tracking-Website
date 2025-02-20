@@ -3,7 +3,6 @@ import Button from './Button'
 import Calender from './Calender'
 import Link from 'next/link'
 import CallToAction from './CallToAction'
-import WaterAwareness from './WaterAwareness'
 
 export default function Hero() {
   return (
@@ -19,7 +18,7 @@ export default function Hero() {
 
  <CallToAction></CallToAction>
 
- <WaterAwareness></WaterAwareness>
+
 
     {/* <Calender demo></Calender> */}
     

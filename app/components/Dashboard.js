@@ -9,6 +9,7 @@ import Login from './Login';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { db } from '@/firebase';
 import WaterQuickEntry from './WaterQuickEntry';
+import WaterAwareness from './WaterAwareness';
 
 export default function Dashboard() {
   const { currentUser, userDataObj, setUserDataObj, loading } = useAuth();
@@ -168,6 +169,8 @@ export default function Dashboard() {
     <div>
        
 <div className="flex flex-col flex-1 gap-8 sm:gap-12 md:gap-16 p-6">
+  <WaterAwareness></WaterAwareness>
+ 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-lg p-6 text-white shadow-xl backdrop-blur-md">
         {Object.keys(statues).map((status, index) => (
           <div

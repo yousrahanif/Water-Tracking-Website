@@ -48,12 +48,7 @@ const WaterAwareness = () => {
         </button>
       </div>
 
-      {/* Optional: List all facts (if you want to include it) */}
-      {/* <ul className="list-disc pl-6 mt-8 text-gray-700">
-        {waterFacts.map((fact, index) => (
-          <li key={index} className="mb-2">{fact}</li>
-        ))}
-      </ul> */}
+     
     </section>
   );
 };
